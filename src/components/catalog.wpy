@@ -1,0 +1,103 @@
+<template>
+  <repeat  for="{{lists}}" key="index" index="index" item="item">
+    <view class="catalog">
+      <image wx:if="{{item.type === 1}}" class="left-img" mode="widthFix" src="https://upload-images.jianshu.io/upload_images/3511473-c5461affb8447522.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"/>
+      <view class="content">
+        <text>传说每隔百年，会出现模样一样的人，是转世？还是巧合？</text>
+        <view wx:if="{{item.type === 2}}" class="content-img">
+          <image mode="widthFix" src="https://upload-images.jianshu.io/upload_images/3511473-c5461affb8447522.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"/>
+          <image mode="widthFix" src="https://upload-images.jianshu.io/upload_images/3511473-c5461affb8447522.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"/>
+          <image mode="widthFix" src="https://upload-images.jianshu.io/upload_images/3511473-c5461affb8447522.jpg?imageMogr2/auto-orient/strip|imageView2/1/w/300/h/240"/>
+        </view>
+        <view class="content-info">
+          <view class="content-info-list">
+            <view>
+              <image src="../assets/label.svg"/>
+              <text>原创</text>
+            </view>
+          </view>
+          <view class="content-info-list">
+            <view class="margin-r text-color">
+              <text>shye</text>
+            </view>
+            <view class="margin-r">
+              <image src="../assets/time.svg"/>
+              <text>2018-9-1</text>
+            </view>
+            <view class="margin-r">
+              <image src="../assets/label.svg"/>
+              <text>200</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </repeat>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Catalog extends wepy.component {
+  props = {
+    lists: {
+      type: Array,
+      default: () => []
+    }
+  }
+
+  onLoad () {
+    console.log(this.lists)
+  }
+}
+</script>
+
+<style lang="less">
+.catalog{
+  padding: 14rpx 28rpx;
+  display: flex;
+  align-items: center;
+  .left-img{
+    width: 200rpx;
+    border-radius: 5rpx;
+    margin-right: 20rpx;
+  }
+  .content{
+    height: 100%;
+    flex: 1;
+    padding: 5rpx 0;
+    font-size: 14px;
+    line-height: 1.4em;
+  }
+}
+.content-info{
+  margin-top: 5rpx;
+  font-size: 10px;
+  color: #868686;
+  display: flex;
+  justify-content: space-between;
+  image{
+    width: 10px;
+    height: 10px;
+    vertical-align: middle;
+    margin-right: 2px;
+  }
+  &-list{
+    display: flex;
+  }
+  .margin-r{
+    margin-right: 6px;
+  }
+  .text-color{
+    color: #2db7f5;
+  }
+}
+.content-img{
+  margin-top: 5rpx;
+  display: flex;
+  justify-content: space-between;
+  image{
+    width: 220rpx;
+  }
+}
+</style>

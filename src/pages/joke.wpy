@@ -1,0 +1,13 @@
+<template>
+  <view>开心一刻</view>
+</template>
+
+<script>
+import wepy from 'wepy'
+
+export default class Joke extends wepy.page {
+  config = {
+    navigationBarTitleText: '开心一刻'
+  }
+}
+</script>
