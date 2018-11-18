@@ -1,5 +1,16 @@
 <template>
-  <view>开心一刻</view>
+  <swiper class="imageContainer" bindchange="handleChange" previous-margin="50rpx" next-margin="50rpx">
+    <swiper-item class="item">
+      <view class="itemImg {{currentIndex === 0 ? 'active' : ''}}">
+        <image src="http://img02.tooopen.com/images/20150928/tooopen_sy_143912755726.jpg"/>
+      </view>
+    </swiper-item>
+    <swiper-item class="item">
+      <view class="itemImg {{currentIndex === 1 ? 'active' : ''}}">
+        <image src="http://img06.tooopen.com/images/20160818/tooopen_sy_175866434296.jpg"/>
+      </view>
+    </swiper-item>
+  </swiper>
 </template>
 
 <script>
@@ -9,5 +20,46 @@ export default class Joke extends wepy.page {
   config = {
     navigationBarTitleText: '开心一刻'
   }
+
+  data = {
+    currentIndex: 0
+  }
+  methods = {
+    handleChange(e) {
+      this.currentIndex = e.detail.current
+    }
+  }
 }
 </script>
+
+<style lang="less">
+.imageContainer{
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+}
+.item{
+  height: 100%;
+}
+.itemImg{
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  border-radius: 15rpx;
+  z-index: 5;
+  opacity: 0.7;
+  top: 10%;
+  background-color: #fff;
+  overflow: hidden;
+}
+.active{
+  opacity: 1;
+  z-index: 10;
+  height: 90%;
+  top: 5%;
+  transition:all .2s ease-in 0s;
+}
+image{
+  width: 100%;
+}
+</style>
